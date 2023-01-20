@@ -1,0 +1,22 @@
+<html>
+	<head></head>
+	<body>
+		<select id="kemasan" onchange="math()">
+			<option value="0" selected="selected">None</option>
+			<option value="1">1 Ltr</option>
+			<option value="5">5 Ltr</option>
+			<option value="20">20 Ltr</option>
+		</select>
+		<input type="number" id="number" onchange="math()">
+		<p id="msg"></p>
+	</body>
+</html>
+	
+<script>
+function math() {
+	var a = parseInt(document.getElementById("kemasan").value);
+	var b = parseInt(document.getElementById("number").value);
+	if(a && b)
+		document.getElementById("msg").innerHTML= a+b;
+}
+</script>

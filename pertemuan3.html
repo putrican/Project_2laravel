@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <div class="col-md-6 col-sm-6 col-lg-2 col-xs-4">
+    <div class="form-group">
+        <h6 class="font-weight-bold">KURS</h6>
+        <select class="custom-select @error('kurs  ') is-invalid @enderror"
+            id="mySelect" onchange="myFunction()" name="kurs"
+            value="{{ old('kurs') }}">
+            <option value="">Select kurs</option>
+            <option value="¥">¥ </option>
+            <option value="$">$</option>
+            <option value="Rp">Rp </option>
+        </select>
+    </div>
+</div>
+
+<p>When you select a new car, a function is triggered which outputs the value of the selected car.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+
+</script>
+
+</body>
+</html>

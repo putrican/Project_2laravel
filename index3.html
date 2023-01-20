@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Ketik disini : <input type="text" id="ketik"></p>
+    <p>Hasil keydown : <span id="hasilKeydown"></span></p>
+    <p>Hasil keypress : <span id="hasilKeyPress"></span></p>
+    <p>Hasil keyup : <span id="hasilKeyUp"></span></p>
+
+    <script>
+        var ketikData = document.getElementById("ketik");
+        var hasilKeyDown = document.getElementById("hasilKeydown");
+        var hasilKeyPress = document.getElementById("hasilKeyPress");
+        var hasilKeyUp = document.getElementById("hasilKeyUp");
+
+        function diKeydown(){
+            hasilKeyDown.innerText = ketikData.value;
+        }
+        function diKeypress(){
+            hasilKeyPress.innerText = ketikData.value;
+        }
+        function diKeyup(){
+            hasilKeyUp.innerHTML = ketikData.value;
+        }
+
+        ketikData.addEventListener("keydown",diKeydown);
+        ketikData.addEventListener("keypress",diKeypress);
+        ketikData.addEventListener("keyup",diKeyup);
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan DOM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="container mx-auto">
+        <div class="w-9/12 mx-auto border border0gray-300 rounded mt-5 px-5 py-5">
+            <table class="min-w-full">
+                <thead class="border-b">
+                  <h1 class="font-bold bg-indigo-300">Biodata Siswa Unggul Sma Pelita Nusantara</h1>
+                  <tr>                  
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left" >
+                      No
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left"  >
+                      Name
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left" >
+                      Nik
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left"  >
+                      Phone
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left" >
+                      Age
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left" >
+                        Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="tBody"></tbody>
+              </table>
+              
+             
+        </div>
+
+        <div class="w-9/12 mx-auto border border0gray-300 rounded mt-10 px-5 py-3">
+            <div>
+                <div class="mb-3">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Input No Siswa</label>
+                    <input type="text" id="no" class="py-2 px-1 text-sm block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Enter nomor siswa" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Input Nama Siswa</label>
+                    <input type="text" id="name" class="py-2 px-1 text-sm block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Enter nama siswa" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Input Nik Siswa</label>
+                    <input type="text" id="nik" class="py-2 px-1 text-sm block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Enter nik siswa" />
+                </div>
+               
+                <div class="mb-3">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Input Phone Siswa</label>
+                    <input type="text" id="phone" class="py-2 px-1 text-sm block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Enter  phone siswa" />
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Input Age Siswa</label>
+                    <input type="text" id="age" class="py-2 px-1 text-sm block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Enter age siswa" />
+                </div>
+                <div>
+                    <button type="button" class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 btnAdd">Save Data Siswa</button>
+
+                    <button type="button" class="inline-flex items-center rounded-md border border-transparent bg-green-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 hidden btnUpdate">Update Data Siswa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+    
+        function renderSiswa(params){
+
+            var tableRow = ''
+            for(var i = 0; i < params.length; i++ ){
+                tableRow += `
+                    <tr class="border">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${students[i].stundent_number}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${students[i].stundent_name}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${students[i].stundent_nik}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${students[i].stundent_phone}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${students[i].stundent_age}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <a href="javascript:;" class="text-indigo-600 text-xs deleteLink">Hapus</a> |
+                            <a href="javascript:;" class="text-indigo-600 text-xs EditLink">Edit</a>
+                        </td>
+                    </tr>
+                `
+            }
+            $('#tBody').html(tableRow)
+
+        }
+
+        var students = [
+            {
+                stundent_number:1,
+                stundent_name:'dedy',
+                stundent_nik:'121213',
+                stundent_phone:'081319291808',
+                stundent_age:'28',
+            },
+            {
+                stundent_number:2,
+                stundent_name:'putri',
+                stundent_nik:'84848',
+                stundent_phone:'0837373737',
+                stundent_age:'23',
+            },
+            {
+                stundent_number:3,
+                stundent_name:'Devi',
+                stundent_nik:'848422',
+                stundent_phone:'08373735467',
+                stundent_age:'23',
+            }
+        ]
+
+        renderSiswa(students)
+
+        $('.deleteLink').on('click', function(){
+            if(confirm('Sure to delete this data?')){
+                var parent = $(this).parent('td').parent('tr')
+                parent.remove()
+            }
+        })
+
+        function resetForm(type, params){
+            var noSiswa = $('#no').val('')
+            var nameSiswa = $('#name').val('')
+            var nikSiswa = $('#nik').val('')
+            var phoneSiswa = $('#phone').val('')
+            var ageSiswa = $('#age').val('')
+        }
+
+        function formValidate(){
+            var noSiswa = $('#no').val()
+            var nameSiswa = $('#name').val()
+            var nikSiswa = $('#nik').val()
+            var phoneSiswa = $('#phone').val()
+            var ageSiswa = $('#age').val()
+
+            if(noSiswa == '' || nameSiswa == '' || nikSiswa == '' || phoneSiswa == '' || ageSiswa == ''){
+                return false
+            }
+
+            return true
+        }
+
+        $('.btnAdd').on('click', function(){
+           
+            var noSiswa = $('#no').val()
+            var nameSiswa = $('#name').val()
+            var nikSiswa = $('#nik').val()
+            var phoneSiswa = $('#phone').val()
+            var ageSiswa = $('#age').val()
+
+            if(formValidate() === false) {
+                return alert('Form tidak boleh kosong')
+            }
+
+
+            var tableRow = `
+                    <tr class="border">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${noSiswa}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${nameSiswa}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${nikSiswa}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${phoneSiswa}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${ageSiswa}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <a href="javascript:;" class="text-indigo-600 text-xs deleteLink">Hapus</a> |
+                            <a href="javascript:;" class="text-indigo-600 text-xs EditLink">Edit</a>
+                        </td>
+                    </tr>
+                `
+            
+            $('#tBody').append(tableRow)
+            resetForm()
+
+        })
+
+        var childrenEdit = ''
+        
+        $('.EditLink').on('click', function(){
+            // hide button add
+            $('.btnAdd').fadeOut(300)
+            $('.btnUpdate').fadeIn(350)
+
+            // save value of edit link
+            childrenEdit = $(this)
+
+            
+            var parent = $(this).parent('td').parent('tr')
+            var no =  $(parent).children().eq(0).text()
+            $('#no').val(no)
+
+            var name =  $(parent).children().eq(1).text()
+            $('#name').val(name)
+
+            var nik =  $(parent).children().eq(2).text()
+            $('#nik').val(nik)
+
+            var phone =  $(parent).children().eq(3).text()
+            $('#phone').val(phone)
+
+            var age =  $(parent).children().eq(4).text()
+            $('#age').val(age)
+
+        })
+
+        $('.btnUpdate').on('click', function(){
+            var noSiswa = $('#no').val()
+            var nameSiswa = $('#name').val()
+            var nikSiswa = $('#nik').val()
+            var phoneSiswa = $('#phone').val()
+            var ageSiswa = $('#age').val()
+
+            if(formValidate() === false) {
+                return alert('Form tidak boleh kosong')
+            }
+
+
+            var tableRow = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${noSiswa}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${nameSiswa}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${nikSiswa}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${phoneSiswa}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${ageSiswa}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <a href="javascript:;" class="text-indigo-600 text-xs deleteLink">Hapus</a> |
+                        <a href="javascript:;" class="text-indigo-600 text-xs EditLink">Edit</a>
+                    </td>
+                `
+
+                var parent = childrenEdit.parent('td').parent('tr')
+                parent.html(tableRow)
+
+                $('.btnAdd').fadeIn(300)
+                $('.btnUpdate').fadeOut(400)
+
+                // save value of edit link
+                childrenEdit = ''
+
+                resetForm()
+
+        })
+        
+    </script>
+</body>
+</html>

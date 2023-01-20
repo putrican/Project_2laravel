@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project 2</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="wizard.css">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+</head>
+
+<body style="text-align: center;">
+    <div class="container-fluid" id="grad1">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 rounded">
+                <!-- <form action="" method="post" class="f1"> -->
+                <form action="proses.php" name="formKu" id="formKu" method="GET">
+                    <h3>Table Description</h3>
+                    <!-- MENU WIZARD -->
+                    <div class="f1-steps">
+                        <div class="f1-progress">
+                            <div class="f1-progress-line" data-now-value="50" data-number-of-steps="4"
+                                style="width: 50%;"></div>
+                        </div>
+                        <div class="f1-step active">
+                            <div class="f1-step-icon"><i class="fa fa-user"></i></div>
+                            <p>Header</p>
+                        </div>
+
+                        <div class="f1-step">
+                            <div class="f1-step-icon"><i class="fa fa-key"></i></div>
+                            <p>Details</p>
+                        </div>
+                        <div class="f1-step">
+                            <div class="f1-step-icon"><i class="fa fa-address-book"></i></div>
+                            <p>Finish</p>
+                        </div>
+                    </div>
+                    <!-- step 1 Header-->
+                    <fieldset>
+                   
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <p>RATE : <span id="hasil"></span></p>
+                                    <p>BL NO : <span id="hasil1"></span></p>
+                                    <p>BL.DATE : <span id="hasil2"></span></p>
+                                    <p>VESSEL : <span id="hasil3"></span></p>
+                                    <p>ETA : <span id="hasil4"></span></p>
+                                </div>
+                                <div class="col-md-4">
+
+                                    <p>N.WEIGHT :<span id="hasil5"></span> </p>
+                                    <p>G.WEIGHT :<span id="hasil6"></span></p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>CONT : <span id="hasil7"></span></p>
+                                </div>
+                            </div>
+
+                       
+                                <p>Rate : <input type="text" name="rate" id="rate"></p>
+                                <p>Bl no : <input type="text" name="bl_no" id="bl_no"></p>
+                                <p>Bl date : <input type="text" name="bl_date" id="bl_date"></p>
+                                <p>Vessel : <input type="text" name="vessel" id="vessel"></p>
+                                <p>Eta : <input type="text" name="eta" id="eta"></p>
+                                <p>N.weight : <input type="text" name="n_weight" id="n_weight"></p>
+                                <p>G.weight : <input type="text" name="g_weight" id="g_weight"></p>
+                                <p>Cont : <input type="text" name="cont" id="cont"></p>
+
+
+                                <p><input type="submit" name="submit" id="submit" value="Kirim"></p>
+                           
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="f1-buttons">
+                                        <button type="button" class="btn btn-success btn-previous"><i
+                                                class="fa fa-arrow-left"></i> Previous</button>
+                                        <button type="button" class="btn btn-primary btn-next">Next Step <i
+                                                class="fa fa-arrow-right"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                    <!-- step 2 Detail-->
+                   <div class="container">
+                        <table class="table table-striped" id="databel">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">HS CODE</th>
+                                    <th scope="col">DESCRIPTION</th>
+                                    <th scope="col">ART NO</th>
+                                    <th scope="col">BRAND</th>
+                                    <th scope="col">CTN</th>
+                                    <th scope="col">QTY</th>
+                                    <th scope="col">UNIT</th>
+                                    <th scope="col">UNIT PRICE</th>
+                                    <th scope="col">UNDER %</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tBody"></tbody>
+
+                        </table>
+
+                    </div>
+                      
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <form name="datacontainer" method="" action="">
+                                        <div class="form-group">
+                                            <label for="hs_code">HS CODE</label>
+                                            <input type="text" class="form-control" name="hs_code" id="hs_code"
+                                                placeholder="isi hs code">
+
+                                            <label for="description">DESCRIPTION</label>
+                                            <input type="text" class="form-control" name="description" id="description"
+                                                placeholder="isi description">
+
+                                            <label for="art_no">ART NO</label>
+                                            <input type="text" class="form-control" name="art_no" id="art_no"
+                                                placeholder="isi art no">
+
+                                            <label for="brand">BRAND</label>
+                                            <input type="text" class="form-control" name="brand" id="brand"
+                                                placeholder="isi brand">
+                                            <label for="ctn">CTN</label>
+                                            <input type="text" class="form-control" name="ctn" id="ctn"
+                                                placeholder="isi ctn">
+                                            <label for="qty">QTY</label>
+                                            <input type="text" class="form-control" name="qty" id="qty"
+                                                placeholder="isi qty">
+                                            <label for="unit">UNIT</label>
+                                            <input type="text" class="form-control" name="unit" id="unit"
+                                                placeholder="isi unit">
+                                            <label for="unit_price">UNIT PRICE</label>
+                                            <input type="text" class="form-control" name="unit_price" id="unit_price"
+                                                placeholder="isi unit price">
+                                            <label for="under">UNDER</label>
+                                            <input type="text" class="form-control" name="under"
+                                                id="exampleFormControlInput1" placeholder="isi under">
+                                            <br>
+                                            <button type="button" onClick='inputdata()'
+                                                class="btn btn-success">Simpan</button>
+                                            <button type="reset" class="btn btn-warning">Batal</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                       
+
+                        <div class="f1-buttons">
+                            <button type="button" class="btn btn-success btn-previous"><i class="fa fa-arrow-left"></i>
+                                Previous</button>
+                            <button type="button" class="btn btn-primary btn-next">Next Step <i
+                                    class="fa fa-arrow-right"></i></button>
+                        </div>
+
+                    </fieldset> 
+                 <!-- step 3 Finish -->
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="wizard.js"></script>
+
+    <script>
+
+        var formData = document.getElementById("formKu");
+        var rateData = document.getElementById("rate");
+        var noData = document.getElementById("bl_no");
+        var dateData = document.getElementById("bl_date");
+        var vesselData = document.getElementById("vessel");
+        var etaData = document.getElementById("eta");
+        var nData = document.getElementById("n_weight");
+        var gData = document.getElementById("g_weight");
+        var contData = document.getElementById("rate");
+
+        var hasilData = document.getElementById("hasil");
+        var hasil1Data = document.getElementById("hasil1");
+        var hasil2Data = document.getElementById("hasil2");
+        var hasil3Data = document.getElementById("hasil3");
+        var hasil4Data = document.getElementById("hasil4");
+        var hasil5Data = document.getElementById("hasil5");
+        var hasil6Data = document.getElementById("hasil6");
+        var hasil7Data = document.getElementById("hasil7");
+
+
+        function jalan(e) {
+            e.preventDefault();
+            hasilData.innerHTML = rateData.value;
+            hasil1Data.innerHTML = noData.value;
+            hasil2Data.innerHTML = dateData.value;
+            hasil3Data.innerHTML = vesselData.value;
+            hasil4Data.innerHTML = etaData.value;
+            hasil5Data.innerHTML = nData.value;
+            hasil6Data.innerHTML = gData.value;
+            hasil7Data.innerHTML = contData.value;
+        }
+
+        formData.addEventListener("submit", jalan)
+    </script>
+</body>
+
+</html>
